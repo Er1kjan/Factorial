@@ -3,9 +3,16 @@
 
 using namespace std;
 
-int main(){
-    print_hello();
-    cout << endl;
-    cout << "The factorial of 5 is " << factorial(5) << endl;
+int main() {
+    int num;
+    cout << "Введите число для вычисления факториала: ";
+    cin >> num;
+
+    if (num < 0) {
+        cout << "Ошибка: факториал определён только для неотрицательных чисел!" << endl;
+    } else {
+        cout << "Факториал " << num << " = " << factorial(num) << endl;
+    }
+
     return 0;
 }
