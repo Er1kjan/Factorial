@@ -23,7 +23,6 @@ jobs:
             - name: make test
               run: make -f Makefile all              
             - name: Test
-              export: LD_LIBRARY_PATH=./build:$LD_LIBRARY_PATH
               run: ./test
     build:
         name: RunPackage 
