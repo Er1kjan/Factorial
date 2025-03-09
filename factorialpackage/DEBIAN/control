@@ -3,3 +3,4 @@ Version: 1.0
 Architecture: amd64
 Maintainer: Er1kjan <evmangur@gmail.com>
 Description: Factorial calculation program
+Depends: libstdc++6
