@@ -3,7 +3,7 @@ on: [push]
 jobs:
     lint:
         name: RunMake
-        runs-on: seld-hosted
+        runs-on: self-hosted
         steps:
             - name: checkout repo
               uses: actions/checkout@v4
@@ -14,7 +14,7 @@ jobs:
     test:
         needs: [lint]  
         name: RunTest
-        runs-on: seld-hosted
+        runs-on: self-hosted
         steps:
             - name: checkout repo
               uses: actions/checkout@v4
@@ -27,7 +27,7 @@ jobs:
     build:
         name: RunPackage 
         needs: [test]
-        runs-on: seld-hosted
+        runs-on: self-hosted
         steps:
             - name: checkout repo
               uses: actions/checkout@v4
