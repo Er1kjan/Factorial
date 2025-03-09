@@ -2,7 +2,7 @@ on: [push]
 
 jobs:
     lint:
-        name: RunMake
+        name: RunMake 
         runs-on: self-hosted
         steps:
             - name: checkout repo
