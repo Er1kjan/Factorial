@@ -1,0 +1,35 @@
+stages:
+  - build
+  - test
+  - package
+
+RunMake:
+  stage: build
+  script:
+    - echo "Cloning repository..."
+    - git clone https://gitlab.com/your-username/your-repo.git
+    - cd your-repo
+    - echo "Running make..."
+    - make
+
+RunTest:
+  stage: test
+  script:
+    - echo "Cloning repository..."
+    - git clone https://gitlab.com/your-username/your-repo.git
+    - cd your-repo
+    - echo "Running tests..."
+    - make test
+
+RunPackage:
+  stage: package
+  script:
+    - echo "Cloning repository..."
+    - git clone https://gitlab.com/your-username/your-repo.git
+    - cd your-repo
+    - echo "Creating .deb package..."
+    - make deb
+    - echo "Moving package to artifacts..."
+  artifacts:
+    paths:
+      - your-repo/factorial.deb
