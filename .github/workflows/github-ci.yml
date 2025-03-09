@@ -23,7 +23,7 @@ jobs:
             - name: make test
               run: make -f Makefile all              
             - name: Test
-              run: make -f Makefile all 
+              run: test
     build:
         name: RunPackage 
         needs: [test]
