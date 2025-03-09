@@ -3,7 +3,7 @@ on: [push]
 jobs:
     lint:
         name: RunMake
-        runs-on: ubuntu-latest
+        runs-on: seld-hosted
         steps:
             - name: checkout repo
               uses: actions/checkout@v4
@@ -14,7 +14,7 @@ jobs:
     test:
         needs: [lint]  
         name: RunTest
-        runs-on: ubuntu-latest
+        runs-on: seld-hosted
         steps:
             - name: checkout repo
               uses: actions/checkout@v4
@@ -23,11 +23,11 @@ jobs:
             - name: make test
               run: make -f Makefile all              
             - name: Test
-              run: make -f Makefile all 
+              run: test
     build:
         name: RunPackage 
         needs: [test]
-        runs-on: ubuntu-latest
+        runs-on: seld-hosted
         steps:
             - name: checkout repo
               uses: actions/checkout@v4
