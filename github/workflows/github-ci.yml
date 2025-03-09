@@ -1,0 +1,47 @@
+on: [push]
+
+jobs:
+    lint:
+        name: RunMake
+        runs-on: self-hosted
+        steps:
+            - name: checkout repo
+              uses: actions/checkout@v4
+            - name: make
+              run: make all
+            - name: make test
+              run: make -f Makefile all
+    test:
+        needs: [lint]  
+        name: RunTest
+        runs-on: self-hosted
+        steps:
+            - name: checkout repo
+              uses: actions/checkout@v4
+            - name: make
+              run: make all
+            - name: make test
+              run: make -f Makefile all              
+            - name: Test
+              run: ./test
+    build:
+        name: RunPackage 
+        needs: [test]
+        runs-on: self-hosted
+        steps:
+            - name: checkout repo
+              uses: actions/checkout@v4
+            - name: make
+              run: make all
+            - name: make test
+              run: make -f Makefile all              
+            - uses: jiro4989/build-deb-action@v4
+              with:
+               package: factorial
+               package_root: package
+               maintainer: Er1kjan
+               version: 1.0 # refs/tags/v*.*.*
+               arch: 'amd64' # optional
+               depends: 'libc6 (>= 2.2.1), git' # optional
+               desc: 'this is sample package.' # optional
+               homepage: 'https://github.com/Er1kjan/Factorial' # optional
