@@ -33,8 +33,8 @@ $(TARGET): main.o $(LIBRARY)
 
 # Сборка тестового исполняемого файла (теперь использует библиотеку)
 test: $(LIBRARY)
-	$(CC) -o test -L. -lfunctions
-	LD_LIBRARY_PATH=.:$$LD_LIBRARY_PATH ./test  # Добавляем текущую директорию в поиск библиотек
+	$(CC) -o factorial-test -L. -lfunctions
+	LD_LIBRARY_PATH=.:$$LD_LIBRARY_PATH ./factorial-test # Добавляем текущую директорию в поиск библиотек
 
 # Основная цель
 all: $(LIBRARY) $(TARGET) test
@@ -47,7 +47,7 @@ clean:
 deb: all
 	mkdir -p $(DEB_DIR)/usr/bin $(DEB_DIR)/usr/lib $(DEB_DIR)/DEBIAN
 	cp $(TARGET) $(DEB_DIR)/usr/bin/
-	cp test $(DEB_DIR)/usr/bin/  # Добавляем тестовый исполняемый файл
+	cp factorial-test $(DEB_DIR)/usr/bin/  # Добавляем тестовый исполняемый файл
 	cp $(LIBRARY) $(DEB_DIR)/usr/lib/
 	# Файл управления пакетом
 	echo "Package: $(PACKAGE)" > $(DEB_DIR)/DEBIAN/control
